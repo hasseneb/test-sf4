@@ -12,10 +12,7 @@ use ApiPlatform\Core\Annotation\ApiResource;
  * Annonces
  *
  * @ORM\Table(name="annonces", indexes={@ORM\Index(name="annonce_id", columns={"annonce_id"})})
- * @ApiResource(
- *     collectionOperations={"get"},
- *     itemOperations={"get"}
- * )
+ * @ApiResource()
  * @ORM\Entity
  */
 class Annonces
@@ -80,7 +77,6 @@ class Annonces
 
     /**
      * @ORM\OneToMany(targetEntity="Mandataire", mappedBy="Annonces")
-     * @ApiSubresource
      */
     private $mandataires;
 
@@ -179,29 +175,8 @@ class Annonces
         return $this;
     }
 
-    public function getMandataire(): ?string
-    {
-        return $this->mandataire;
-    }
 
-    public function setMandataire(?string $mandataire): self
-    {
-        $this->mandataire = $mandataire;
 
-        return $this;
-    }
-
-    public function getFonction(): ?string
-    {
-        return $this->fonction;
-    }
-
-    public function setFonction(?string $fonction): self
-    {
-        $this->fonction = $fonction;
-
-        return $this;
-    }
 
     /**
      * @return Collection|Mandataire[]

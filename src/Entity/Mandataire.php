@@ -2,15 +2,13 @@
 
 namespace App\Entity;
 
+use ApiPlatform\Core\Annotation\ApiSubresource;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Core\Annotation\ApiResource;
 
 /**
+ * @ApiResource()
  * @ORM\Entity(repositoryClass="App\Repository\MandataireRepository")
- * @ApiResource(
- *     collectionOperations={"get"},
- *     itemOperations={"get"}
- * )
  */
 class Mandataire
 {
@@ -32,7 +30,7 @@ class Mandataire
     private $fonction;
 
     /**
-     * @ORM\ManyToOne(targetEntity="Annonces")
+     * @ORM\ManyToOne(targetEntity="Annonces", inversedBy="mandataires")
      */
     private $Annonces;
 
